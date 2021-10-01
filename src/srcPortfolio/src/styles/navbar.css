@@ -1,0 +1,15 @@
+.mon-logo {
+    max-width: 60px;
+}
+.navbar-transparent {
+    background-color: rgba(127, 182, 212, 0);
+}
+.navbar-my-Blue {
+    background-color: #7FB6D4;
+}
+.nav-link:hover {
+    text-decoration: underline ;
+}
+.nav-link {
+    font-size: 1.3rem;
+}

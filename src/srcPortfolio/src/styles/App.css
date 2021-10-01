@@ -1,0 +1,21 @@
+.my-color-blue {
+    color: #7FB6D4;
+}
+.my-bg-blue {
+    background-color: #7FB6D4;
+}
+h2{
+    font-size: 3rem!important;
+}
+.css-et1ao3-MuiTypography-root{
+    font-size: 1.18rem!important;
+}
+.button-myBlue {
+    background-color: #7FB6D4 !important;
+    color: white!important;
+    font-size: 1.5rem;
+}
+p {
+    font-size: 1.08rem;
+    text-align: justify;
+}
