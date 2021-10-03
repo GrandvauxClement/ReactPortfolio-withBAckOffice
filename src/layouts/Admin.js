@@ -16,12 +16,14 @@ import routes from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import logo from "srcPortfolio/src/assets/logo/monLogoBlancFondTransparent.png";
+import AddProjectBack from "../views/Project/AddProjectBack";
 
 let ps;
 
 const switchRoutes = (
   <Switch>
+    <Route path="/admin/project/add" component={AddProjectBack} />
     {routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
@@ -34,6 +36,7 @@ const switchRoutes = (
       }
       return null;
     })}
+
     <Redirect from="/admin" to="/admin/dashboard" />
   </Switch>
 );

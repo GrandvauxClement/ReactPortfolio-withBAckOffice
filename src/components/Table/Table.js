@@ -7,10 +7,16 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
+import Edit from "@material-ui/icons/Edit";
+import Delete from "@material-ui/icons/Delete";
+
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
 
 const useStyles = makeStyles(styles);
+function RedirectEditProjet() {
+
+}
 
 export default function CustomTable(props) {
   const classes = useStyles();
@@ -22,14 +28,14 @@ export default function CustomTable(props) {
           <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
             <TableRow className={classes.tableHeadRow}>
               {tableHead.map((prop, key) => {
-                return (
-                  <TableCell
-                    className={classes.tableCell + " " + classes.tableHeadCell}
-                    key={key}
-                  >
-                    {prop}
-                  </TableCell>
-                );
+                  return (
+                      <TableCell
+                          className={classes.tableCell + " " + classes.tableHeadCell}
+                          key={key}
+                      >
+                        {prop}
+                      </TableCell>
+                  );
               })}
             </TableRow>
           </TableHead>
@@ -39,11 +45,21 @@ export default function CustomTable(props) {
             return (
               <TableRow key={key} className={classes.tableBodyRow}>
                 {prop.map((prop, key) => {
-                  return (
-                    <TableCell className={classes.tableCell} key={key}>
-                      {prop}
-                    </TableCell>
-                  );
+                  console.log('TBODY ; prop ' + prop+' key: '+key);
+                  if (key === 4){
+                    return (
+                        <TableCell className={classes.tableCell} key={key}>
+                            <Edit onClick={RedirectEditProjet(prop)} />
+                            <Delete />
+                        </TableCell>
+                    );
+                  } else {
+                    return (
+                        <TableCell className={classes.tableCell} key={key}>
+                          {prop}
+                        </TableCell>
+                    );
+                  }
                 })}
               </TableRow>
             );

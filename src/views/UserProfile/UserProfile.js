@@ -1,4 +1,7 @@
 import React from "react";
+import {
+  useLocation
+} from "react-router-dom";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -35,8 +38,12 @@ const styles = {
 };
 
 const useStyles = makeStyles(styles);
+function useQuery() {
+  return new URLSearchParams(useLocation().search)
+}
 
 export default function UserProfile() {
+  let query = useQuery();
   const classes = useStyles();
   return (
     <div>
@@ -44,7 +51,7 @@ export default function UserProfile() {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
+              <h4 className={classes.cardTitleWhite}>Edit Profile {query}</h4>
               <p className={classes.cardCategoryWhite}>Complete your profile</p>
             </CardHeader>
             <CardBody>
