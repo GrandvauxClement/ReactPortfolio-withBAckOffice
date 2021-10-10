@@ -1,25 +1,21 @@
 import React, {useState} from "react";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import { FormControl} from "@material-ui/core";
-import ChipInput from 'material-ui-chip-input'
-import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
-
-import DateFnsUtils from '@date-io/date-fns';
-// core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Card from "components/Card/Card.js";
+import UserService from "../../srcPortfolio/src/services/user.service";
+import {makeStyles} from "@material-ui/core/styles";
+import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { fr } from "date-fns/locale";
+import GridContainer from "../../components/Grid/GridContainer";
+import GridItem from "../../components/Grid/GridItem";
+import Card from "../../components/Card/Card";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-import UploadImages from "../../components/ImagesUpload/images-upload";
+import CustomInput from "../../components/CustomInput/CustomInput";
 import TextField from "@material-ui/core/TextField";
-import UserService from "../../srcPortfolio/src/services/user.service"
-import { fr } from "date-fns/locale";
-
+import {FormControl} from "@material-ui/core";
+import ChipInput from "material-ui-chip-input";
+import UploadImages from "../../components/ImagesUpload/images-upload";
+import Button from "../../components/CustomButtons/Button";
 
 const styles = {
     cardCategoryWhite: {
@@ -39,7 +35,6 @@ const styles = {
         textDecoration: "none",
     },
 };
-
 const initialFormValues = {
     titre: "",
     images: [],
@@ -49,7 +44,7 @@ const initialFormValues = {
     url: ""
 }
 
-const useFormControls = () => {
+const useFormControls = (initialDateValue) => {
     // We'll update "values" as the form updates
     const [values, setValues] = useState(initialFormValues);
     // "errors" is used to check the form for errors
@@ -104,33 +99,21 @@ const useFormControls = () => {
             // await postContactForm(values);
             console.log('values of my form :'+ values.images +' '+selectedDate)
 
-            // POST request using fetch inside useEffect React hook
-            /*const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ titre: values.titre, images: values.images, enLigne: "true", description: values.description, technologie: values.technologie, annee: selectedDate })
-            };
-            fetch('http://127.0.0.1:8000/api/projets', requestOptions)
-                .then(response => console.log('response :' + response.json()) );*/
-
             UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
                 (response)=> {
                     console.log('add project done '+response);
                 }
             )
-
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-
         }
     }
 
     const formIsValid = (fieldValues = values) => {
-      // this function will check if the form values and return a boolean
+        // this function will check if the form values and return a boolean
         const isValid = fieldValues.titre
             && fieldValues.description;
         return isValid;
     }
-    const [selectedDate, handleDateChange] = useState(new Date());
+    const [selectedDate, handleDateChange] = useState(new Date(initialDateValue));
     return {
         handleInputValue,
         handleFormSubmit,
@@ -145,9 +128,9 @@ const useFormControls = () => {
 
 const useStyles = makeStyles(styles);
 
-
-export default function AddProjectBack() {
+function EditProjectBack(props) {
     const classes = useStyles();
+    const {projects} = props;
     const {
         handleInputValue,
         handleFormSubmit,
@@ -157,17 +140,17 @@ export default function AddProjectBack() {
         selectedDate,
         handleDateChange,
         callbackNameImageUpload
-    } = useFormControls();
+    } = useFormControls(projects.annee);
+    if (!projects || projects.length === 0) return <p>No projects, sorry</p>;
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={fr}>
-         <form onSubmit={handleFormSubmit}>
-            <div>
+            <form onSubmit={handleFormSubmit}>
                 <GridContainer>
                     <GridItem xs={12} sm={12} md={11}>
                         <Card>
                             <CardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite}>Ajouter un nouveau projet</h4>
-                                <p className={classes.cardCategoryWhite}>remplissez les champs suivants</p>
+                                <h4 className={classes.cardTitleWhite}> Modifier votre projet</h4>
+                                <p className={classes.cardCategoryWhite}> remplacez les champs obsolètes par les nouvelles données </p>
                             </CardHeader>
                             <CardBody>
                                 <GridContainer>
@@ -188,6 +171,7 @@ export default function AddProjectBack() {
                                             variant="filled"
                                             onBlur={handleInputValue}
                                             onChange={handleInputValue}
+                                            defaultValue={projects.titre}
                                             name="titre"
                                             label="Titre du projet"
                                             rows={1}
@@ -207,11 +191,11 @@ export default function AddProjectBack() {
                                                 <ChipInput
                                                     className="customChipInput"
                                                     label="Renseignez les technologies utilisé"
-                                                    defaultValue={["PHP", "Symfony"]}
+                                                    defaultValue={projects.technologie}
                                                     helperText="(02/30)"
                                                     variant="filled"
-                                                   // onBlur={handleChangeTechnoValue}
-                                                   // onChange={handleInputValue}
+                                                    // onBlur={handleChangeTechnoValue}
+                                                    // onChange={handleInputValue}
                                                     name="titre"
                                                     fullWidth
                                                     onChange={(chips) => handleChangeTechnoValue(chips)}
@@ -240,6 +224,7 @@ export default function AddProjectBack() {
                                                 id="url"
                                                 onBlur={handleInputValue}
                                                 onChange={handleInputValue}
+                                                defaultValue={projects.url}
                                                 name="url"
                                                 variant="filled"
                                                 fullWidth
@@ -256,6 +241,7 @@ export default function AddProjectBack() {
                                             onChange={handleInputValue}
                                             name="description"
                                             label="Saisir votre description"
+                                            defaultValue={projects.description}
                                             multiline={true}
                                             rows={5}
                                             autoComplete="none"
@@ -272,13 +258,13 @@ export default function AddProjectBack() {
                                 </GridContainer>
                             </CardBody>
                             <CardFooter>
-                                <Button type="submit" disabled={!formIsValid()} color="primary">Ajouter le projet</Button>
+                                <Button type="submit" disabled={!formIsValid()} color="primary">Modifier le projet</Button>
                             </CardFooter>
                         </Card>
                     </GridItem>
                 </GridContainer>
-            </div>
-         </form>
+            </form>
         </MuiPickersUtilsProvider>
-    );
+    )
 }
+export default EditProjectBack

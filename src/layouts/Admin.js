@@ -18,12 +18,14 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "srcPortfolio/src/assets/logo/monLogoBlancFondTransparent.png";
 import AddProjectBack from "../views/Project/AddProjectBack";
+import EditProjectLoadData from "../views/Project/EditProjectLoadData.js";
 
 let ps;
 
 const switchRoutes = (
   <Switch>
     <Route path="/admin/project/add" component={AddProjectBack} />
+    <Route path="/admin/project/edit/:idProject" render={(props) => <EditProjectLoadData {...props} />} />
     {routes.map((prop, key) => {
       if (prop.layout === "/admin") {
         return (
@@ -51,7 +53,7 @@ export default function Admin({ ...rest }) {
   // states and functions
   const [image, setImage] = React.useState(bgImage);
   const [color, setColor] = React.useState("blue");
-  const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
+  const [fixedClasses, setFixedClasses] = React.useState("dropdown");
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleImageClick = (image) => {
     setImage(image);
@@ -99,7 +101,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"Creative Tim"}
+        logoText={"Dashboard"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}

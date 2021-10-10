@@ -20,12 +20,12 @@ function Footer() {
             <div style={{backgroundColor: '#085c7f'}}>
                 <Container>
                     <Row >
-                        <Col className='d-flex justify-content-around'>
+                        <Col className='d-flex justify-content-around align-items-center'>
                             <img src={logo} alt="mon logo" style={{maxWidth:70}}/>
-                            <div className='d-flex justify-content-around mt-1'>
-                                <a href="https://fr.linkedin.com/in/cl%C3%A9ment-grandvaux-548ab219a" target="_blank" rel="noreferrer"><LinkedInIcon  sx={{ color: 'white', marginRight: 2, fontSize: 50 }}/></a>
-                                <a href="https://github.com/GrandvauxClement" target="_blank" rel="noreferrer"><GitHubIcon  sx={{ color: 'white', marginRight: 2, fontSize: 50 }}/></a>
-                                <a href="https://www.facebook.com/clement.grandvaux/" target="_blank" rel="noreferrer"><FacebookIcon sx={{ color: 'white', marginRight: 2, fontSize: 50 }} /></a>
+                            <div className='d-flex justify-content-around mt-1 '>
+                                <a href="https://fr.linkedin.com/in/cl%C3%A9ment-grandvaux-548ab219a" target="_blank" rel="noreferrer"><LinkedInIcon  style={{ color: 'white', marginRight: 2, fontSize: 50 }}/></a>
+                                <a href="https://github.com/GrandvauxClement" target="_blank" rel="noreferrer" className="mt-1"><GitHubIcon  style={{ color: 'white', marginRight: 2, fontSize: 41 }}/></a>
+                                <a href="https://www.facebook.com/clement.grandvaux/" target="_blank" rel="noreferrer"><FacebookIcon style={{ color: 'white', marginRight: 2, fontSize: 50 }} /></a>
                             </div>
                         </Col>
                     </Row>
@@ -43,9 +43,9 @@ function Footer() {
                         <Col md={3} xs={12}>
                             <h4 className="text-white mt-2">CLÉMENT GRANDVAUX</h4>
                             <ul style={{listStyleType: 'none', paddingLeft: 0}} className="mt-1">
-                                <li className="mt-3"> <EmailIcon sx={{ color: 'white', marginRight: 2, fontSize: 30 }} />clement.grandvaux@hotmail.com</li>
-                                <li className="mt-2"> <PhoneAndroidIcon sx={{ color: 'white', marginRight: 2, fontSize: 30 }} /> 06 29 16 89 43</li>
-                                <li className="mt-2"> <LocationOnIcon sx={{ color: 'white', marginRight: 2, fontSize: 30 }} /> 39210 Le Vernois (Jura)</li>
+                                <li className="mt-3"> <EmailIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> clement.grandvaux@hotmail.com</li>
+                                <li className="mt-2"> <PhoneAndroidIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> 06 29 16 89 43</li>
+                                <li className="mt-2"> <LocationOnIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> 39210 Le Vernois (Jura)</li>
                             </ul>
 
                         </Col>

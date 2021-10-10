@@ -12,6 +12,7 @@ export default class UploadImages extends Component {
             progressInfos: [],
             message: [],
             imageInfos: [],
+            stockImageName: []
         };
     }
 
@@ -21,14 +22,13 @@ export default class UploadImages extends Component {
         for (let i = 0; i < event.target.files.length; i++) {
             images.push(URL.createObjectURL(event.target.files[i]))
         }
-        console.log(images + 'images');
-
         this.setState({
             selectedFiles: event.target.files,
             previewImages: images,
             progressInfos: [],
             message: [],
             imageInfos: [],
+            stockImageName: []
         });
     }
 
@@ -48,10 +48,13 @@ export default class UploadImages extends Component {
             },
             () => {
                 for (let i = 0; i < selectedFiles.length; i++) {
-                    this.upload(i, selectedFiles[i]);
+                     this.upload(i, selectedFiles[i]);
                 }
+
             }
         );
+
+
     }
 
     upload(idx, file) {
@@ -63,15 +66,18 @@ export default class UploadImages extends Component {
                 progressInfos: _progressInfos,
             });
         })
-            .then(() => {
+            .then((response) => {
                 this.setState((prev) => {
                     let nextMessage = [...prev.message, "Uploaded the image successfully: " + file.name];
+                    const UpdateStockImageName = [...this.state.stockImageName];
+                    UpdateStockImageName[idx] = response.data;
+                    this.props.nameUploadFile(UpdateStockImageName);
                     return {
-                        message: nextMessage
+                        message: nextMessage,
+                        stockImageName: UpdateStockImageName
                     };
                 });
-
-                return UploadService.getFiles();
+                return response.data
             })
             .then((files) => {
                 this.setState({
@@ -91,16 +97,16 @@ export default class UploadImages extends Component {
     }
 
     componentDidMount() {
-        // UploadService.getFiles().then((response) => {
-        //     this.setState({
-        //         imageInfos: response.data,
-        //     });
-        // });
+        /*UploadService.getFiles().then((response) => {
+            this.setState({
+                imageInfos: response.data,
+            });
+        });*/
     }
 
 
     render() {
-        const { selectedFiles, previewImages, progressInfos, message, imageInfos } = this.state;
+        const { selectedFiles, previewImages, progressInfos, message } = this.state;
 
         return (
             <div>
@@ -159,18 +165,19 @@ export default class UploadImages extends Component {
                     </div>
                 )}
 
-                <div className="card mt-3">
-                    <div className="card-header">List of Files</div>
-                    <ul className="list-group list-group-flush">
-                        {imageInfos &&
-                        imageInfos.map((img, index) => (
-                            <li className="list-group-item" key={index}>
-                                <p><a href={img.url}>{img.name}</a></p>
-                                <img src={img.url} alt={img.name} height="80px" />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                {/*<div className="card mt-3">*/}
+                {/*    <div className="card-header">List of Files</div>*/}
+                {/*    <ul className="list-group list-group-flush">*/}
+                {/*        {console.log('images :'+imageInfos)}*/}
+                {/*        {imageInfos &&*/}
+                {/*        imageInfos.map((img, index) => (*/}
+                {/*            <li className="list-group-item" key={index}>*/}
+                {/*                <p><a href={img.url}>{img.name}</a></p>*/}
+                {/*                <img src={img.url} alt={img.name} height="80px" />*/}
+                {/*            </li>*/}
+                {/*        ))}*/}
+                {/*    </ul>*/}
+                {/*</div>*/}
             </div>
         );
     }

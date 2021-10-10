@@ -18,7 +18,8 @@ class FileUploadService {
     }
 
     getFiles() {
-        return http.get("/api/projets/1");
+        return http.get("/admin/getFiles");
+       // return {"name": "luffy-6159fca62f14e.png", "url": "http://127.0.0.1:8000/images/projet/luffy-6159fca62f14e.png"}
     }
 }
 

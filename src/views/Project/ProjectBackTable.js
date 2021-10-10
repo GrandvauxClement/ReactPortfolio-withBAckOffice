@@ -54,18 +54,17 @@ export default function ProjectBackTable(props) {
         return [ projects[cle].id, projects[cle].titre, projects[cle].annee, "true", projects[cle].id];
         }
     );
-    console.log(monTableau);
         return (
             <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                     <Card>
-                        <CardHeader color="primary">
+                        <CardHeader color="info">
                             <h4 className={classes.cardTitleWhite}>Mes Projets</h4>
                             <p className={classes.cardCategoryWhite}>
                                 Table de gestion de mes projets (edit, delete)
                             </p>
                             <Link to="/admin/project/add">
-                                <Button color="info" >Ajouter un projet</Button>
+                                <Button color="primary" >Ajouter un projet</Button>
                             </Link>
                         </CardHeader>
                         <CardBody>
