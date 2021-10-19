@@ -37,12 +37,11 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div >
+            <div>
                 <header>
                      <Navigation />
                      <BannerHeader />
                 </header>
-                <h3>{this.state.content}</h3>
                 <Body />
                 <Footer />
             </div>

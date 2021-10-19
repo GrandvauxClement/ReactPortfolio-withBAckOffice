@@ -19,7 +19,7 @@ import UploadImages from "../../components/ImagesUpload/images-upload";
 import TextField from "@material-ui/core/TextField";
 import UserService from "../../srcPortfolio/src/services/user.service"
 import { fr } from "date-fns/locale";
-
+import { useHistory } from "react-router-dom";
 
 const styles = {
     cardCategoryWhite: {
@@ -48,6 +48,7 @@ const initialFormValues = {
     annee: "",
     url: ""
 }
+
 
 const useFormControls = () => {
     // We'll update "values" as the form updates
@@ -101,23 +102,16 @@ const useFormControls = () => {
         e.preventDefault();
         if (formIsValid()) {
             // send to my back end data of form
-            // await postContactForm(values);
             console.log('values of my form :'+ values.images +' '+selectedDate)
+            if (values.images.length !== 0 ){
+                UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
+                    (response)=> {
+                        console.log('add project done '+response);
+                        window.location.reload();
+                    }
+                )
+            }
 
-            // POST request using fetch inside useEffect React hook
-            /*const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ titre: values.titre, images: values.images, enLigne: "true", description: values.description, technologie: values.technologie, annee: selectedDate })
-            };
-            fetch('http://127.0.0.1:8000/api/projets', requestOptions)
-                .then(response => console.log('response :' + response.json()) );*/
-
-            UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
-                (response)=> {
-                    console.log('add project done '+response);
-                }
-            )
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
 
@@ -147,6 +141,13 @@ const useStyles = makeStyles(styles);
 
 
 export default function AddProjectBack() {
+    let history = useHistory();
+
+    function redirectToHome() {
+        history.replace('/admin/project');
+     //  history.push('admin/project');
+    }
+
     const classes = useStyles();
     const {
         handleInputValue,
@@ -272,7 +273,7 @@ export default function AddProjectBack() {
                                 </GridContainer>
                             </CardBody>
                             <CardFooter>
-                                <Button type="submit" disabled={!formIsValid()} color="primary">Ajouter le projet</Button>
+                                <Button type="submit" disabled={!formIsValid()} onClick={redirectToHome}  color="primary">Ajouter le projet</Button>
                             </CardFooter>
                         </Card>
                     </GridItem>

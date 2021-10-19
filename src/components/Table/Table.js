@@ -35,6 +35,7 @@ function RedirectActionProjet(action, id) {
     UserService.deleteProject(id).then(
         () => {
           console.log('ici delete done');
+          window.location.reload();
         }
     )
   }
@@ -43,6 +44,7 @@ function RedirectActionProjet(action, id) {
 export default function CustomTable(props) {
   const [open, setOpen] = React.useState(false);
   const [tc, setTC] = React.useState(false);
+
 
   React.useEffect(() => {
     // Specify how to clean up after this effect:

@@ -20,13 +20,15 @@ header img {
         font-size: 5em;
         line-height : 1em;
     }
+    .hero-content-left button {
+        background-color: #7FB6D4;
+        color: white;
+        font-size:1.5rem;
+    }
     /*Ordi */
 }
-@media screen and (max-width:1000px )
+@media screen and (min-width: 767px) and (max-width:1000px )
 {
-    .header-contenu{
-        height: 50vh;
-    }
     #maNavBar{
         height: 17vh;
     }
@@ -34,17 +36,50 @@ header img {
         background-color: #7FB6D4;
         box-shadow: 100px 100px 100px 900px rgba(0, 0, 0, 0.32);
     }
-    header img {
-        height: 7em;
+    .main {
+        height: 620px!important;
     }
     .hero-content-left h1 {
         font-size: 3em;
         line-height : 1.5em;
     }
+    .hero-content-left button {
+        background-color: #7FB6D4;
+        color: white;
+        font-size:1.2rem;
+    }
+    /*Tablette / Smartphone */
+}
+@media screen and (max-width:766px )
+{
+    #maNavBar{
+        height: 17vh;
+    }
+    #navbarSupportedContent{
+        background-color: #7FB6D4;
+        box-shadow: 100px 100px 100px 900px rgba(0, 0, 0, 0.32);
+    }
+    .main {
+        height: 550px!important;
+    }
+    .hero-content-left h1 {
+        font-size: 3em;
+        line-height : 1.5em;
+    }
+    .hero-content-left button {
+        background-color: #7FB6D4;
+        color: white;
+        font-size:1rem;
+    }
     /*Tablette / Smartphone */
 }
 .header-contenu .row {
     height: 100%;
+}
+
+.lead {
+    font-size:1.5rem;
+    line-height: 1em;
 }
 .background-img {
     position:relative;
@@ -66,16 +101,6 @@ header img {
 .hero-content-left,
 .sign-up-form-wrap {
     z-index:2
-}
-
-.hero-content-left button {
-    background-color: #7FB6D4;
-    color: white;
-    font-size:1.5rem;
-}
-.lead {
-    font-size:1.5rem;
-    line-height: 1em;
 }
 
 .bottom-img {

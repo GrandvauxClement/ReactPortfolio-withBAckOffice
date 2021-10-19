@@ -17,7 +17,7 @@ function ModalProject(props) {
                 <Carousel variant="dark">
                     {props.project.images.map((image, index) =>
                         {
-                            const srcImage = 'https://127.0.0.1:8000/image/projet/'+ image
+                            const srcImage = 'http://127.0.0.1:8000/image/projet/'+ image
                             return (
                                 <Carousel.Item key={index}>
                                     <img className='d-block w-100' alt='presentation projet' src={srcImage}/>

@@ -16,7 +16,7 @@ function Footer() {
 
     return (
         <>
-        <footer>
+        <footer className="p-0">
             <div style={{backgroundColor: '#085c7f'}}>
                 <Container>
                     <Row >
@@ -54,7 +54,7 @@ function Footer() {
             </div>
             <div style={{backgroundColor: '#085c7f'}}>
                 <Container>
-                    <Row className='align-items-center justify-content-around'>
+                    <Row className='align-items-center justify-content-around pt-2'>
 
                         <h6 className="text-center text-white">
                             <a href='#' className="text-white" onClick={() => setModalMentionLegalShow(true)}>Mentions légales</a>

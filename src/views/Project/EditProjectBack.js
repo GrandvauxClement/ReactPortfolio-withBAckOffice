@@ -131,6 +131,7 @@ const useStyles = makeStyles(styles);
 function EditProjectBack(props) {
     const classes = useStyles();
     const {projects} = props;
+    if (!projects || projects.length === 0) return <p>No projects, sorry</p>;
     const {
         handleInputValue,
         handleFormSubmit,
@@ -141,7 +142,7 @@ function EditProjectBack(props) {
         handleDateChange,
         callbackNameImageUpload
     } = useFormControls(projects.annee);
-    if (!projects || projects.length === 0) return <p>No projects, sorry</p>;
+
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={fr}>
             <form onSubmit={handleFormSubmit}>

@@ -19,7 +19,7 @@ const Project = (props) => {
                                 <span className='project-text'>{project.name} </span>
                                 <span className='project-description'>{project.description}</span>
                             </li>*/
-                            <ProjectDisplay project={project} key={project.id} />
+                                <ProjectDisplay project={project} key={project.id} />
                         );
                     })}
                 </div>
