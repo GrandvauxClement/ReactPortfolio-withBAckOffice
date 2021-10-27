@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import AuthService from "../services/auth.service";
 import {Redirect} from "react-router-dom"
+import Admin from "../../../layouts/Admin";
 export default class Profile extends Component{
     constructor(props) {
         super(props);
@@ -17,26 +18,7 @@ export default class Profile extends Component{
 
         } else {
             return (
-                <div className="container">
-                    <header className="jumbotron">
-                        <h3>
-                            <strong> {currentUser}</strong> Profile
-                        </h3>
-                    </header>
-                    <p>
-                        <strong>Id : </strong>{" "}
-                        {currentUser.id}
-                    </p>
-                    <p>
-                        <strong>Email : </strong>{" "}
-                        {currentUser.email}
-                    </p>
-                    <strong>Authorities : </strong>
-                    <ul>
-                        {currentUser.roles &&
-                        currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-                    </ul>
-                </div>
+                <Admin />
             );
         }
 

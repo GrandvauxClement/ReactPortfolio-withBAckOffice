@@ -18,24 +18,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // core components
-import Admin from "layouts/Admin.js";
 import RTL from "layouts/RTL.js";
 
 import "assets/css/material-dashboard-react.css?v=1.10.0";
 import Home from "./srcPortfolio/src/components/home.component";
 import Login from "./srcPortfolio/src/components/login.component";
+import Profile from "./srcPortfolio/src/components/profile.component";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/home" component={Home}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/admin" component={Admin} />
-      <Route path="/rtl" component={RTL} />
-      <Redirect from="/" to="/home" />
-    </Switch>
-  </BrowserRouter>,
+    <GoogleReCaptchaProvider
+        useRecaptchaNet
+        reCaptchaKey="6Le7cM0cAAAAAGa6uojXAsn5821fzC6ezXfqPLMZ"
+        scriptProps={{ async: true, defer: true, appendTo: 'body'}}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home" component={Home}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/admin" component={Profile} />
+          <Route path="/rtl" component={RTL} />
+          <Redirect from="/" to="/home" />
+        </Switch>
+      </BrowserRouter>
+    </GoogleReCaptchaProvider>,
   document.getElementById("root")
 );

@@ -1,5 +1,5 @@
 import WithDataLoading from "../../srcPortfolio/src/components/WithDataLoading";
-import MessageBack from "./Message";
+import MessageBack from "./MessageBack";
 import React, {useEffect, useState} from "react";
 import UserService from "../../srcPortfolio/src/services/user.service"
 
@@ -20,7 +20,7 @@ function MessageBackLoadData() {
         )
     }, [setAppState]);
     return (
-        <DataLoading isLoading ={appState.loading} projects={appState.messages} />
+        <DataLoading isLoading ={appState.loading} messages={appState.messages} />
     )
 
 }

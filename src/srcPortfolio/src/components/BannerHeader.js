@@ -18,7 +18,7 @@ function BannerHeader() {
             <div className="hero-content-left text-white text-center">
               <h1 className="text-white">Développeur web freelance </h1>
               <p className="lead mt-5 d-none d-md-block"> Développeur freelance dans l&apos;Est de la France depuis 1 ans, je développe vos projets web et mobile sur mesure.</p>
-                <div className="d-flex justify-content-center flex-lg-row flex-column">
+                <div className="d-flex justify-content-center flex-lg-row flex-column align-items-center">
                   <a href="#contact"><Button variant="#7FB6D4" className="mt-4 mx-5 ">Contactez-moi </Button></a>
                   <p className="mt-lg-5 mt-3 lead ml-lg-4 text-center"><u> OU </u></p>
                   <a href="#contact"><Button variant="#7FB6D4" className="mt-lg-4 mx-5">Demandez un devis</Button></a>

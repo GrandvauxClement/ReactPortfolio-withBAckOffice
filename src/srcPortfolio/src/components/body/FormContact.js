@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import TextField from "@material-ui/core/TextField";
+
 import Button from "react-bootstrap/Button"
 
 const initialFormValues = {
@@ -122,21 +123,24 @@ function ContactForm() {
     return (
         <form className='d-flex flex-column' onSubmit={handleFormSubmit}>
             {inputFieldValues.map((inputFieldValue, index) => {
-                return (
-                    <TextField
-                        variant="filled"
-                        key={index}
-                        onBlur={handleInputValue}
-                        onChange={handleInputValue}
-                        name={inputFieldValue.name}
-                        label={inputFieldValue.label}
-                        multiline={inputFieldValue.multiline ?? false}
-                        rows={inputFieldValue.rows ?? 1}
-                        autoComplete="none"
-                        {...(errors[inputFieldValue.name] && {error: true, helperText: errors[inputFieldValue.name]})}
-                        className='my-2 text-white'
+                    return (
+                        <TextField
+                            variant="filled"
+                            key={index}
+                            onBlur={handleInputValue}
+                            onChange={handleInputValue}
+                            name={inputFieldValue.name}
+                            label={inputFieldValue.label}
+                            multiline={inputFieldValue.multiline ?? false}
+                            rows={inputFieldValue.rows ?? 1}
+                            autoComplete="none"
+                            {...(errors[inputFieldValue.name] && {
+                                error: true,
+                                helperText: errors[inputFieldValue.name]
+                            })}
+                            className='my-2 text-white'
                         />
-                );
+                    );
             })}
 
             <Button type="submit" disabled={!formIsValid()} variant="#7FB6D4" style={{backgroundColor: '#085c7f', color:'white'}}> Envoyer </Button>
