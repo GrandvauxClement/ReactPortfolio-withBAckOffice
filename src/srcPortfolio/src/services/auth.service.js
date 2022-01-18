@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://127.0.0.1:8000/api/"
+const API_URL = "https://www.portfolioback.clementgrandvaux.fr/api/"
 
 class AuthService {
     login(username, password) {
@@ -15,11 +15,9 @@ class AuthService {
                 return response.data
             });
     }
-
     logout() {
         localStorage.removeItem("user");
     }
-
     getCurrentUser() {
         return JSON.parse(localStorage.getItem("user"));
     }

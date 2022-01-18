@@ -15,7 +15,9 @@ function Body() {
 
     useEffect( () => {
         setAppState( {loading: true});
-        const apiUrl = `http://127.0.0.1:8000/api/projets`;
+       // const apiUrl = `http://127.0.0.1:8000/api/projets`;
+        const apiUrl = "https://www.portfolioback.clementgrandvaux.fr/api/projets"
+
         fetch(apiUrl)
             .then((res) => res.json())
             .then((projects) => {

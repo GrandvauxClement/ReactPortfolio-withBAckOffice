@@ -34,7 +34,6 @@ function RedirectActionProjet(action, id) {
     // delete component
     UserService.deleteProject(id).then(
         () => {
-          console.log('ici delete done');
           window.location.reload();
         }
     )

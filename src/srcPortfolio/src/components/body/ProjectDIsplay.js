@@ -3,7 +3,7 @@ import "../../styles/project.css"
 import ModalProject from "./ModalProject";
 import PropTypes from "prop-types";
 function ProjectDisplay({project}) {
-    const projectImage = 'url(http://127.0.0.1:8000/image/projet/'+ project.images[0]+')'
+    const projectImage = 'url(https://www.portfolioback.clementgrandvaux.fr/public/image/projet/' + project.images[0]+')';
     const [modalShow, setModalShow] = useState(false);
     return (
         <>

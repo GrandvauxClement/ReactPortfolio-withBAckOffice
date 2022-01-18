@@ -42,7 +42,6 @@ const useStyles = makeStyles(styles);
 export default function MessageBack(props) {
     const classes = useStyles();
     const { messages } = props;
-    // console.log(messages[0])
     if (!messages || messages.length === 0) return <p>No message, sorry</p>;
     let monTableau = Object.keys(messages).map(
         function(cle) {

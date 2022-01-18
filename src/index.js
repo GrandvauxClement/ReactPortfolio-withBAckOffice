@@ -20,7 +20,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // core components
-import RTL from "layouts/RTL.js";
 
 import "assets/css/material-dashboard-react.css?v=1.10.0";
 import Home from "./srcPortfolio/src/components/home.component";
@@ -37,7 +36,6 @@ ReactDOM.render(
           <Route path="/home" component={Home}/>
           <Route path="/login" component={Login}/>
           <Route path="/admin" component={Profile} />
-          <Route path="/rtl" component={RTL} />
           <Redirect from="/" to="/home" />
         </Switch>
       </BrowserRouter>

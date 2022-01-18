@@ -77,30 +77,12 @@ export default class Login extends Component {
                     <div className="col-4 d-flex flex-column">
                         <img src={logo} className='img-fluid mx-auto' alt='logo grandvaux clement' style={{maxHeight: 200+'px'}}/>
                              <Form onSubmit={this.handleLogin} ref={c => { this.form = c;}}>
-                                 {/*<div className="form-group">
-                                     <label htmlFor="username">Username</label>
-                                     <Input type="text" className="form-control" name="usernme"
-                                            value={this.state.username}
-                                            onChange={this.onChangeUsername}
-                                            validations={[required]}
-                                     />
-
-                                 </div>*/}
                                  <TextField variant="filled" onBlur={this.onChangeUsername}
                                             onChange={this.onChangeUsername}
                                             name="username" required={true} value={this.state.username}
                                             label="username" autoComplete="none"
                                             style={{width:25+'vw'}} type="text" className="my-2"
                                  />
-
-                                {/* <div className="form-group">
-                                     <label htmlFor="password">Password</label>
-                                     <Input type="password" className="form-control" name="password"
-                                            value={this.state.password}
-                                            onChange={this.onChangePassword}
-                                            validations={[required]}
-                                     />
-                                 </div>*/}
                                  <TextField variant="filled" onBlur={this.onChangePassword}
                                             onChange={this.onChangePassword}
                                             name="password" required={true} value={this.state.password}

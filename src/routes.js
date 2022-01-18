@@ -33,7 +33,6 @@ const dashboardRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
     layout: "/admin",
@@ -41,7 +40,6 @@ const dashboardRoutes = [
   {
     path: "/project",
     name: "Project",
-    rtlName: "خرائط",
     icon: LibraryBooks,
     component: ProjetBackLoadData,
     layout: "/admin",
@@ -49,7 +47,6 @@ const dashboardRoutes = [
   {
     path: "/messages",
     name: "Messages",
-    rtlName: "إخطارات",
     icon: Message,
     component: MessageBackLoadData,
     layout: "/admin",
@@ -57,7 +54,6 @@ const dashboardRoutes = [
   {
     path: "/notifications",
     name: "Notifications",
-    rtlName: "إخطارات",
     icon: Notifications,
     component: NotificationsPage,
     layout: "/admin",

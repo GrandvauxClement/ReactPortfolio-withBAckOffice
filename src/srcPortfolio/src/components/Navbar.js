@@ -48,10 +48,6 @@ function Navigation() {
 
     const [hideOnScroll, setHideOnScroll] = useState('navbar-transparent')
     useScrollPosition(({ prevPos, currPos}) => {
-        const isShow = currPos.y > prevPos.y
-        if (isShow) {
-            console.log('.')
-        }
         if (currPos.y !== 0) {
             setHideOnScroll('navbar-my-Blue')
         } else {

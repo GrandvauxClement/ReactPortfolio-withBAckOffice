@@ -6,8 +6,6 @@ import EditProjectBack from "./EditProjectBack";
 function EditProjectLoadData() {
 
     const {idProject} = useParams();
-    // console.log(this.props.match.params.id)
-
     const DataLoading = WithDataLoading(EditProjectBack);
     const [appState, setAppState] = useState({
         loading: false,

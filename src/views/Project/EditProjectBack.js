@@ -95,13 +95,9 @@ const useFormControls = (initialDateValue) => {
         //this function will be triggered by the submit event
         e.preventDefault();
         if (formIsValid()) {
-            // send to my back end data of form
-            // await postContactForm(values);
-            console.log('values of my form :'+ values.images +' '+selectedDate)
 
             UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
                 (response)=> {
-                    console.log('add project done '+response);
                 }
             )
         }

@@ -15,7 +15,7 @@ function MesServicesCard({service}) {
                     avatar={
                         <Avatar src={service.logo} alt={service.id}/>
                     }
-                            title={<h6>{service.title}</h6>}
+                            title={<h6 className='h6'>{service.title}</h6>}
                             subheader={<small>{service.subtitle}</small>}
                 />
                 <CardMedia

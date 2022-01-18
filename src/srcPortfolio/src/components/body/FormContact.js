@@ -2,6 +2,8 @@ import React, {useState} from "react"
 import TextField from "@material-ui/core/TextField";
 
 import Button from "react-bootstrap/Button"
+import AddAlert from "@material-ui/icons/Done";
+import Snackbar from "../../../../components/Snackbar/Snackbar";
 
 const initialFormValues = {
     name: "",
@@ -55,7 +57,6 @@ export const useFormControls = () => {
         if (formIsValid()) {
             // send to my back end data of form
            // await postContactForm(values);
-            console.log('values of my form :'+values.name +' '+values.email)
 
                 // POST request using fetch inside useEffect React hook
                 const requestOptions = {
@@ -63,8 +64,13 @@ export const useFormControls = () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: values.name, email: values.email, devis: false, objet: values.objet, message: values.message  })
                 };
-                fetch('https://127.0.0.1:8000/api/contacts', requestOptions)
-                    .then(response => console.log('response :' + response.json()) );
+                fetch("https://www.portfolioback.clementgrandvaux.fr/api/contacts", requestOptions)
+                    .then(
+                        () => {
+                            setValues({...initialFormValues});
+                       // window.location.reload();
+                        }
+                    );
 
 
 // empty dependency array means this effect will only run once (like componentDidMount in classes)
@@ -114,6 +120,31 @@ const inputFieldValues = [
 ];
 
 function ContactForm() {
+    const [tr, setTR] = React.useState(false);
+    React.useEffect(() => {
+        // Specify how to clean up after this effect:
+        return function cleanup() {
+            // to stop the warning of calling setState of unmounted component
+            var id = window.setTimeout(null, 0);
+            while (id--) {
+                window.clearTimeout(id);
+            }
+        };
+    });
+    const showNotification = (place) => {
+        switch (place) {
+            case "tr":
+                if (!tr) {
+                    setTR(true);
+                    setTimeout(function () {
+                        setTR(false);
+                    }, 6000);
+                }
+                break;
+            default:
+                break;
+        }
+    };
    const {
         handleInputValue,
         handleFormSubmit,
@@ -143,7 +174,16 @@ function ContactForm() {
                     );
             })}
 
-            <Button type="submit" disabled={!formIsValid()} variant="#7FB6D4" style={{backgroundColor: '#085c7f', color:'white'}}> Envoyer </Button>
+            <Button type="submit" disabled={!formIsValid()} variant="#7FB6D4" style={{backgroundColor: '#085c7f', color:'white'}} onClick={()=>showNotification("tr")}> Envoyer </Button>
+            <Snackbar
+                place="tr"
+                color="success"
+                icon={AddAlert}
+                message="Votre message a bien été envoyé - Je vous réponds dans les plus brefs délais."
+                open={tr}
+                closeNotification={() => setTR(false)}
+                close
+            />
         </form>
     )
 }

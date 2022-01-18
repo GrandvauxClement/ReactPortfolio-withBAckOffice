@@ -97,11 +97,7 @@ export default class UploadImages extends Component {
     }
 
     componentDidMount() {
-        /*UploadService.getFiles().then((response) => {
-            this.setState({
-                imageInfos: response.data,
-            });
-        });*/
+
     }
 
 
@@ -164,20 +160,6 @@ export default class UploadImages extends Component {
                         </ul>
                     </div>
                 )}
-
-                {/*<div className="card mt-3">*/}
-                {/*    <div className="card-header">List of Files</div>*/}
-                {/*    <ul className="list-group list-group-flush">*/}
-                {/*        {console.log('images :'+imageInfos)}*/}
-                {/*        {imageInfos &&*/}
-                {/*        imageInfos.map((img, index) => (*/}
-                {/*            <li className="list-group-item" key={index}>*/}
-                {/*                <p><a href={img.url}>{img.name}</a></p>*/}
-                {/*                <img src={img.url} alt={img.name} height="80px" />*/}
-                {/*            </li>*/}
-                {/*        ))}*/}
-                {/*    </ul>*/}
-                {/*</div>*/}
             </div>
         );
     }

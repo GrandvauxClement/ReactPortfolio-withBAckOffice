@@ -28,8 +28,6 @@ export default class Home extends Component {
             error => {
                 this.setState({
                     content: error.message
-                        // (error.response && error.response.data) ||
-                        // error.message || error.toString()
                 });
             }
         );
@@ -38,7 +36,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <header>
+                <header className='bg-light'>
                      <Navigation />
                      <BannerHeader />
                 </header>
