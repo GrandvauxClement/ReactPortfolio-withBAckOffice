@@ -102,7 +102,7 @@ const useFormControls = () => {
         if (formIsValid()) {
             if (values.images.length !== 0 ){
                 UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
-                    (response)=> {
+                    ()=> {
                         window.location.reload();
                     }
                 )

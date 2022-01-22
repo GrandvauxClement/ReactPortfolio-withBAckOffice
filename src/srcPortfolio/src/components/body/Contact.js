@@ -21,10 +21,10 @@ function Contact() {
                             <h5 className='my-3'>Une idée ? Un projet ? n&apos;hésitez pas à demander un devis ! (GRATUIT).</h5>
                             <h5 className='my-3'>Si vous avez des questions, contacter-moi. Je vous répondrai dans les plus brefs délais.</h5>
                             <ul style={{listStyleType: 'none',}} className="ms-2">
-                                <li className="h5"> <EmailIcon sx={{ color: 'white', marginRight: 5, fontSize: 42 }} />clement.grandvaux@hotmail.com</li>
-                                <li className="h5"> <PhoneAndroidIcon sx={{ color: 'white', marginRight: 4, fontSize: 42 }} /> 06 29 16 89 43</li>
-                                <li className="h5"> <LocationOnIcon sx={{ color: 'white', marginRight: 4, fontSize: 42 }} /> 39210 Le Vernois (Jura)</li>
-                                <li className="h5"> <SettingsIcon sx={{ color: 'white', marginRight: 4, fontSize: 42 }} /> <strong>S.I.R.E.N :</strong>892 288 382</li>
+                                <li className="h4"> <EmailIcon style={{ color: 'white', marginRight: 4, fontSize: 42 }} />clement.grandvaux@hotmail.com</li>
+                                <li className="h4"> <PhoneAndroidIcon style={{ color: 'white', marginRight: 4, fontSize: 42 }} /> 06 29 16 89 43</li>
+                                <li className="h4"> <LocationOnIcon style={{ color: 'white', marginRight: 4, fontSize: 42 }} /> 39000 Lons-le-saunier (Jura)</li>
+                                <li className="h4"> <SettingsIcon style={{ color: 'white', marginRight: 4, fontSize: 42 }} /> <strong>S.I.R.E.N :</strong>892 288 382</li>
                             </ul>
 
                         </div>

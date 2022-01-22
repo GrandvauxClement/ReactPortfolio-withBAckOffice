@@ -97,7 +97,7 @@ const useFormControls = (initialDateValue) => {
         if (formIsValid()) {
 
             UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
-                (response)=> {
+                ()=> {
                 }
             )
         }

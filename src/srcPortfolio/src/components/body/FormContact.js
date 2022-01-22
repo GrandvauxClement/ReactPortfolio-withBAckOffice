@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import TextField from "@material-ui/core/TextField";
-
+import UserService from "../../services/user.service"
 import Button from "react-bootstrap/Button"
 import AddAlert from "@material-ui/icons/Done";
 import Snackbar from "../../../../components/Snackbar/Snackbar";
@@ -64,11 +64,18 @@ export const useFormControls = () => {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: values.name, email: values.email, devis: false, objet: values.objet, message: values.message  })
                 };
-                fetch("https://www.portfolioback.clementgrandvaux.fr/api/contacts", requestOptions)
+                fetch(
+                  //  "https://www.portfolioback.clementgrandvaux.fr/api/contacts",
+                    "https://127.0.0.1:8000/api/contacts",
+                    requestOptions)
                     .then(
                         () => {
+                            UserService.sendMailNotifForNewMessage(values.name, values.email, values.objet, values.message)
                             setValues({...initialFormValues});
-                       // window.location.reload();
+                            document.querySelectorAll('form> .my-2 input').forEach(value => {
+                                value.value = '';
+                            })
+                           document.querySelector('form> .my-2 textarea').value = '';
                         }
                     );
 

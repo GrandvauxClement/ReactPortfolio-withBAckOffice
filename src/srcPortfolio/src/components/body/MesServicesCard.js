@@ -25,10 +25,10 @@ function MesServicesCard({service}) {
                     alt={service.id}
                 />
                 <CardContent style={{minHeight: 160}}>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="textSecondary">
                         {service.textUn}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="textSecondary">
                         {service.textDeux}
                     </Typography>
                 </CardContent>

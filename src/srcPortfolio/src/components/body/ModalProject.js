@@ -42,7 +42,7 @@ function ModalProject(props) {
 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="#7FB6D4" className='btn-modal' onClick={props.onHide}>Fermer</Button>
+                <Button variant="outline" className='btn-modal' onClick={props.onHide}>Fermer</Button>
             </Modal.Footer>
         </Modal>
     )

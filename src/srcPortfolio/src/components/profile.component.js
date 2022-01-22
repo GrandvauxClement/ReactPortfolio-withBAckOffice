@@ -11,7 +11,7 @@ export default class Profile extends Component{
     }
 
     render() {
-        const {redirectUrl} = "/home"
+        const {redirectUrl} = "/"
         const {currentUser} = this.state;
         if (!currentUser){
             return <Redirect to={redirectUrl}/>

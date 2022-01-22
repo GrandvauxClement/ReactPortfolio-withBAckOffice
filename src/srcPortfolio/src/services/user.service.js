@@ -1,6 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header"
-const API_URL = "https://www.portfolioback.clementgrandvaux.fr/";
+// const API_URL = "https://www.portfolioback.clementgrandvaux.fr/";
+ const API_URL = "https://127.0.0.1:8000/";
 
 class UserService {
     getPublicContent() {
@@ -28,6 +29,17 @@ class UserService {
     }
     getMessage() {
         return axios.get(API_URL + 'api/contacts')
+    }
+    deleteMessage(id) {
+        return axios.delete(API_URL + 'api/contacts/' + id)
+    }
+    sendMailNotifForNewMessage(name, email, object, content) {
+        return axios.post(API_URL + 'sendMail/newMessageReceive', {
+            name: name,
+            email: email,
+            object: object,
+            content: content
+        }, {headers: authHeader()})
     }
 }
 

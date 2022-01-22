@@ -17,7 +17,7 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 // core components
 
@@ -33,10 +33,10 @@ ReactDOM.render(
         scriptProps={{ async: true, defer: true, appendTo: 'body'}}>
       <BrowserRouter>
         <Switch>
-          <Route path="/home" component={Home}/>
           <Route path="/login" component={Login}/>
           <Route path="/admin" component={Profile} />
-          <Redirect from="/" to="/home" />
+          <Route path="/" component={Home}/>
+          {/*<Redirect from="/" to="/home" />*/}
         </Switch>
       </BrowserRouter>
     </GoogleReCaptchaProvider>,

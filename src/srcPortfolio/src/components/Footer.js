@@ -45,7 +45,7 @@ function Footer() {
                             <ul style={{listStyleType: 'none', paddingLeft: 0}} className="mt-1">
                                 <li className="mt-3"> <EmailIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> clement.grandvaux@hotmail.com</li>
                                 <li className="mt-2"> <PhoneAndroidIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> 06 29 16 89 43</li>
-                                <li className="mt-2"> <LocationOnIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> 39210 Le Vernois (Jura)</li>
+                                <li className="mt-2"> <LocationOnIcon style={{ color: 'white', marginRight: 5, fontSize: 30 }} /> 39000 Lons-le-saunier (Jura)</li>
                             </ul>
 
                         </Col>
