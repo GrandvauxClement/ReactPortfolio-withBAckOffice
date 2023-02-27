@@ -51,6 +51,7 @@ const initialFormValues = {
 
 
 const useFormControls = () => {
+    let history = useHistory();
     // We'll update "values" as the form updates
     const [values, setValues] = useState(initialFormValues);
     // "errors" is used to check the form for errors
@@ -101,11 +102,10 @@ const useFormControls = () => {
         e.preventDefault();
         if (formIsValid()) {
             if (values.images.length !== 0 ){
-                UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url).then(
-                    ()=> {
-                        window.location.reload();
-                    }
-                )
+                UserService.addProject(values.titre, values.images, "true", values.description, values.technologie, selectedDate, values.url)
+                    .then(() => {
+                        history.replace('/admin/project');
+                    })
             }
 
 
@@ -137,12 +137,6 @@ const useStyles = makeStyles(styles);
 
 
 export default function AddProjectBack() {
-    let history = useHistory();
-
-    function redirectToHome() {
-        history.replace('/admin/project');
-     //  history.push('admin/project');
-    }
 
     const classes = useStyles();
     const {
@@ -269,7 +263,7 @@ export default function AddProjectBack() {
                                 </GridContainer>
                             </CardBody>
                             <CardFooter>
-                                <Button type="submit" disabled={!formIsValid()} onClick={redirectToHome}  color="primary">Ajouter le projet</Button>
+                                <Button type="submit" disabled={!formIsValid()} color="primary">Ajouter le projet</Button>
                             </CardFooter>
                         </Card>
                     </GridItem>

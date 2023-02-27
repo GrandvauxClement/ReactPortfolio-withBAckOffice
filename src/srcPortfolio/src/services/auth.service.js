@@ -1,10 +1,9 @@
-import axios from "axios";
-const API_URL = "https://www.portfolioback.clementgrandvaux.fr/api/"
+import http from "../../../http-common";
 
 class AuthService {
     login(username, password) {
-        return axios
-            .post(API_URL + "login", {
+        return http
+            .post("/api/login", {
                 email:username,
                 password:password
             })

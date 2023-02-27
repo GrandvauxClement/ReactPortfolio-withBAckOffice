@@ -57,8 +57,13 @@ function Footer() {
                     <Row className='align-items-center justify-content-around pt-2'>
 
                         <h6 className="text-center text-white">
-                            <a href='#' className="text-white" onClick={() => setModalMentionLegalShow(true)}>Mentions légales</a>
-                            | © Copyright 2021 - Clément GRANDVAUX. Tous droits réservés
+                            <a
+                                href='#' className="text-white"
+                                onClick={() => setModalMentionLegalShow(true)}
+                            >
+                                Mentions légales
+                            </a>
+                            | © Copyright {new Date().getFullYear()} - Clément GRANDVAUX. Tous droits réservés
                         </h6>
                     </Row>
                 </Container>

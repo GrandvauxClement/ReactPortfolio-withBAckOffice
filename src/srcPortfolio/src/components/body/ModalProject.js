@@ -34,7 +34,9 @@ function ModalProject(props) {
                         <h3 className='my-color-blue'> Technologies</h3>
                         <ul className='d-flex flex-wrap '>
                             {props.project.technologie.map((techno, index)=> (
-                                <li key={index} style={{listStyleType: 'none'}} className='mt-2'><Button variant="#7FB6D4" className='btn-modal mx-1'> {techno}</Button></li>
+                                <li key={index} style={{listStyleType: 'none'}} className='mt-2'>
+                                    <Button variant="#7FB6D4" className='btn-modal mx-1'> {techno}</Button>
+                                </li>
                             ))}
                         </ul>
                     </Col>
@@ -43,6 +45,13 @@ function ModalProject(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="outline" className='btn-modal' onClick={props.onHide}>Fermer</Button>
+                {props.project.url !== "" &&
+                    <Button variant="outline" className='btn-modal'
+                            onClick={() => window.open(props.project.url, '_blank').focus()}
+                    >
+                        Consulter le site
+                    </Button>
+                }
             </Modal.Footer>
         </Modal>
     )
